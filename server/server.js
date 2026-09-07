@@ -25,8 +25,33 @@ app.use(morgan('dev'));
 // Database connection helper
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/naik_foods';
 
+import { sampleCategories, sampleProducts, sampleBlogs, sampleGiftBoxes, sampleStores, sampleCoupons } from './config/seedData.js';
+import Category from './models/Category.js';
+import Product from './models/Product.js';
+import Blog from './models/Blog.js';
+import GiftBox from './models/GiftBox.js';
+import Store from './models/Store.js';
+import Coupon from './models/Coupon.js';
+
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('MongoDB connected successfully for Naik Foods'))
+  .then(async () => {
+    console.log('MongoDB connected successfully for Naik Foods');
+    try {
+      const count = await Category.countDocuments();
+      if (count === 0) {
+        console.log('Database empty. Seeding initial Naik Foods dataset...');
+        await Category.insertMany(sampleCategories);
+        await Product.insertMany(sampleProducts);
+        await Blog.insertMany(sampleBlogs);
+        await GiftBox.insertMany(sampleGiftBoxes);
+        await Store.insertMany(sampleStores);
+        await Coupon.insertMany(sampleCoupons);
+        console.log('Initial dataset auto-seeded successfully!');
+      }
+    } catch (sErr) {
+      console.warn('Auto-seed check notice:', sErr.message);
+    }
+  })
   .catch((err) => console.warn('MongoDB connection notice: Running with in-memory / fallback data mode if DB unvailable.', err.message));
 
 // Root welcome & health route
