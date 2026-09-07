@@ -29,6 +29,15 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected successfully for Naik Foods'))
   .catch((err) => console.warn('MongoDB connection notice: Running with in-memory / fallback data mode if DB unvailable.', err.message));
 
+// Root welcome & health route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to Naik Foods API Server',
+    status: 'Running',
+    health: '/api/health'
+  });
+});
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
