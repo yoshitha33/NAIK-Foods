@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FFF8F0;
+    color: #1F2937;
+    overflow-x: hidden;
+  }
+}
+
+/* Brand Theme Color Utilities */
+:root {
+  --color-brand-orange: #F28C28;
+  --color-brand-orange-hover: #E07B18;
+  --color-brand-orange-light: #FFF3E0;
+  --color-brand-green: #2E7D32;
+  --color-brand-green-hover: #1B5E20;
+  --color-brand-green-light: #E8F5E9;
+  --color-brand-cream: #FFF8F0;
+}
+
+.bg-brand-cream {
+  background-color: #FFF8F0;
+}
+
+.bg-brand-orange {
+  background-color: #F28C28;
+}
+
+.bg-brand-orange-hover:hover {
+  background-color: #E07B18;
+}
+
+.bg-brand-orange-light {
+  background-color: #FFF3E0;
+}
+
+.text-brand-orange {
+  color: #F28C28;
+}
+
+.border-brand-orange {
+  border-color: #F28C28;
+}
+
+.bg-brand-green {
+  background-color: #2E7D32;
+}
+
+.bg-brand-green-hover:hover {
+  background-color: #1B5E20;
+}
+
+.bg-brand-green-light {
+  background-color: #E8F5E9;
+}
+
+.text-brand-green {
+  color: #2E7D32;
+}
+
+.border-brand-green {
+  border-color: #2E7D32;
+}
+
+.font-heritage {
+  font-family: 'Rozha One', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #F28C28;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E07B18;
+}
+
+/* Hide scrollbar for carousel tracks (cross-browser) */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE / Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome / Safari / Opera */
+}
